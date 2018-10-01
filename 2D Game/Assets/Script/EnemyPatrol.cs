@@ -12,9 +12,10 @@ public class EnemyPatrol : MonoBehaviour {
 	public float WallCheckRadius;
 	public LayerMask WhatIsWall;
 	private bool HittingWall;
+	public Transform WallCheck;
 	
 	// Edge Check
-	private bool NotAtaEdge;
+	private bool NotAtEdge;
 	public Transform EdgeCheck;
 
 	
@@ -24,7 +25,7 @@ public class EnemyPatrol : MonoBehaviour {
 		
 		HittingWall = Physics2D.OverlapCircle(WallCheck.position, WallCheckRadius, WhatIsWall);
 		
-		if (Hittingwall || !NotAtEdge){
+		if (HittingWall || !NotAtEdge){
 			MoveRight = !MoveRight;
 		}
 
@@ -34,7 +35,7 @@ public class EnemyPatrol : MonoBehaviour {
 		}
 		else {
 			transform.localScale = new Vector3(0.2f,0.2f,1f);
-			GetComponent<Rididbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody>().velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody>().velocity.y);
 		}
 	}
 }
