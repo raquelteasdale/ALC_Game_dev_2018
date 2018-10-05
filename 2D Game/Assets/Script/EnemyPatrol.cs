@@ -30,12 +30,12 @@ public class EnemyPatrol : MonoBehaviour {
 		}
 
 		if (MoveRight){
-			transform.localScale = new Vector3(-0.2f,0.2f,1f);
-			GetComponent<Rigidbody2D>().velocity = new Vector2(MoveSpeed, GetComponent<Rigidbody>().velocity.y);
+			transform.localScale = new Vector3(-7f,6f,1f);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 		}
 		else {
-			transform.localScale = new Vector3(0.2f,0.2f,1f);
-			GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody>().velocity.y);
+			transform.localScale = new Vector3(7f,6f,1f);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 		}
 	}
 }
