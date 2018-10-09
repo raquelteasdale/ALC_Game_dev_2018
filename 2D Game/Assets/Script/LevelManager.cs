@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
 	public GameObject CurrentCheckPoint;
-	private Rigidbody2D PC;
+	public Rigidbody2D PC;
 
 	// Particles
 
@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour {
 	// Respawn Delay
 
 	public float RespawnDelay;
+
+	private CameraController CameraFollow;
 
 	// Point Penalty on Death
 
@@ -26,7 +28,9 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PC = FindObjectOfType<Rigidbody2D> ();
+        // PC = FindObjectOfType<Rigidbody2D> ();
+
+		CameraFollow = FindObjectOfType<CameraController>();
 	}
 	
 	public void RespawnPlayer(){
@@ -39,10 +43,13 @@ public class LevelManager : MonoBehaviour {
 		// Hide PC
 		// PC.enabled = false;
 		PC.GetComponent<Renderer> ().enabled = false;
+		CameraFollow.isFollowing = false;
 		// Gravity Reset
-		GravityScore = PC.GetComponent<Rigidbody2D>().gravityScale;
-		PC.GetComponent<Rigidbody2D>().gravityScale = 0f;
-		PC.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+		// GravityScore = PC.GetComponent<Rigidbody2D>().gravityScale;
+		// PC.GetComponent<Rigidbody2D>().gravityScale = 0f;
+		// PC.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
 		// Point Penalty
 		ScoreManager.AddPoints(-PointPenaltyOnDeath);
 		// Debug Message
@@ -50,13 +57,16 @@ public class LevelManager : MonoBehaviour {
 		// Respawn Delay
 		yield return new WaitForSeconds (RespawnDelay);
 		// Gravity Restore
-		PC.GetComponent<Rigidbody2D>().gravityScale = GravityScore;
+
+		// PC.GetComponent<Rigidbody2D>().gravityScale = GravityScore;
+
 		// Match PCs transform position
 		PC.transform.position = CurrentCheckPoint.transform.position;
 		// Show PC
 		// PC.enabled = true;
 		PC.GetComponent<Renderer> ().enabled = true;
 		// Spawn PC
+		CameraFollow.isFollowing = true;
 		Instantiate (RespawnParticle, CurrentCheckPoint.transform.position, CurrentCheckPoint.transform.rotation);
 	}
 }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterMove : MonoBehaviour {
+public class CharacterMove : MonoBehaviour
+{
 
     // Player movement variables
     public float MoveSpeed;
@@ -17,20 +18,27 @@ public class CharacterMove : MonoBehaviour {
     // Non-Slide Player
     private float moveVelocity;
 
+    public Transform firePoint;
+    public GameObject ninjaStar;
+
     // Use this for initialization
-    void Start () {
-        
+    void Start()
+    {
+
     }
 
-    void FixedUpdate () {
-            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+    void FixedUpdate()
+    {
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
 
         // This code makes the character jump
-        if (Input.GetKeyDown(KeyCode.Space) && grounded){
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
             Jump();
         }
 
@@ -38,7 +46,8 @@ public class CharacterMove : MonoBehaviour {
         if (grounded)
             doubleJump = false;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !doubleJump && !grounded){
+        if (Input.GetKeyDown(KeyCode.Space) && !doubleJump && !grounded)
+        {
             Jump();
             doubleJump = true;
         }
@@ -46,20 +55,30 @@ public class CharacterMove : MonoBehaviour {
         moveVelocity = 0f;
 
         // This code makes the character move from side to side using the A&D keys
-        if (Input.GetKey(KeyCode.D)){
+        if (Input.GetKey(KeyCode.D))
+        {
             //GetComponent<Rigidbody2D>().velocity = new Vector2(MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             moveVelocity = MoveSpeed;
         }
-        if (Input.GetKey(KeyCode.A)){
+        if (Input.GetKey(KeyCode.A))
+        {
             //GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             moveVelocity = -MoveSpeed;
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
+            }
+
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
-
     }
 
-    public void Jump(){
+    public void Jump()
+    {
+
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, JumpHeight);
     }
 }
+    
