@@ -18,17 +18,9 @@ public class CharacterMove : MonoBehaviour
     // Non-Slide Player
     private float moveVelocity;
 
-    public Transform firePoint;
-    public GameObject ninjaStar;
+    public float shotDelay;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
 
@@ -60,25 +52,23 @@ public class CharacterMove : MonoBehaviour
             //GetComponent<Rigidbody2D>().velocity = new Vector2(MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             moveVelocity = MoveSpeed;
         }
-        if (Input.GetKey(KeyCode.A))
-        {
+        if (Input.GetKey(KeyCode.A)){
             //GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             moveVelocity = -MoveSpeed;
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
-            }
 
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
+
+        // Player Flip
+        if (GetComponent<Rigidbody2D>().velocity.x > 0)
+            transform.localScale = new Vector3(5f,5f,1f);
+        else if (GetComponent<Rigidbody2D>().velocity.x < 0)
+            transform.localScale = new Vector3(-5f,5f,1f);
+
     }
 
-    public void Jump()
-    {
-
+    public void Jump(){   
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, JumpHeight);
     }
 }
-    
