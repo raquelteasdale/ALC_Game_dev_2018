@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour {
 
 	public float RespawnDelay;
 
-	private CameraController CameraFollow;
-
 	// Point Penalty on Death
 
 	public int PointPenaltyOnDeath;
@@ -30,7 +28,7 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
         // PC = FindObjectOfType<Rigidbody2D> ();
 
-		CameraFollow = FindObjectOfType<CameraController>();
+	
 	}
 	
 	public void RespawnPlayer(){
@@ -43,7 +41,6 @@ public class LevelManager : MonoBehaviour {
 		// Hide PC
 		// PC.enabled = false;
 		PC.GetComponent<Renderer> ().enabled = false;
-		CameraFollow.isFollowing = false;
 		// Gravity Reset
 
 		// GravityScore = PC.GetComponent<Rigidbody2D>().gravityScale;
@@ -66,7 +63,6 @@ public class LevelManager : MonoBehaviour {
 		// PC.enabled = true;
 		PC.GetComponent<Renderer> ().enabled = true;
 		// Spawn PC
-		CameraFollow.isFollowing = true;
 		Instantiate (RespawnParticle, CurrentCheckPoint.transform.position, CurrentCheckPoint.transform.rotation);
 	}
 }
