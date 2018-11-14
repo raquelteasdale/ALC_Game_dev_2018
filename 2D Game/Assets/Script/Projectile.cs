@@ -4,7 +4,10 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public float Speed;
-	public Rigidbody2D PC;
+
+	public float TimeOut;
+
+	public GameObject PC;
 
 	public GameObject EnemyDeath;
 
@@ -14,17 +17,21 @@ public class Projectile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		 
+		 PC = GameObject.Find("PC");
+
+		EnemyDeath = Resources.Load("Prefabs/Death_PS") as GammeObject;
+
+		ProjectileParticle = Resources.Load("Prefabs/Respawn_PS") as GameObject;
+
 		if(PC.transform.localScale.x < 0)
 			Speed = -Speed;
 
-			// Speed = Speed * Mathf.Sign(PC.transform.localScale.x);
+		
 
-			// GetComponent<Rigidbody2D>().velocity = new Vector2(Speed + (PC.GetComponent<Rigidbody2D>().velocity.x/3),GetComponent<Rigidbody2D>().velocity.y + (PC.GetComponent<Rigidbody2D>().velocity.y/3));
-
+			// Destroys Projectile after X seconds
+			Destroy(gameObject,TimeOut);
+		}
 			
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		GetComponent<Rigidbody2D>().velocity = new Vector2(Speed, GetComponent<Rigidbody2D>().velocity.y);
@@ -35,9 +42,10 @@ public class Projectile : MonoBehaviour {
 			Instantiate(EnemyDeath, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 			ScoreManager.AddPoints (PointsForKill);
-		}
+	}
 		
-		
+		void OnCollisionEnter2D(Collision2D other)
+	{
 		Instantiate(ProjectileParticle, transform.position, transform.rotation);
 		Destroy (gameObject);
 	}

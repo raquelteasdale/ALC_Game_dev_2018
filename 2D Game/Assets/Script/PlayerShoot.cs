@@ -10,8 +10,10 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Start(){
 		Projectile = GameObject.Find("Projectile");
+		//Load Projectile from Resources/Prefabs Folder
+		Projectile = Resources.Load("Prefabs/Projectile") as GameObject;
 	}
-	// Update is called once per frame
+	// Update is called once per frame as GameObjects;
 
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.RightControl))
