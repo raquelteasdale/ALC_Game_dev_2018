@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour {
         public float Speed;
 
         public float TimeOut;
-
         public GameObject PC;
 
         public GameObject EnemyDeath;
@@ -28,8 +27,10 @@ public class Projectile : MonoBehaviour {
 
 
 
+
                 // Destroys Projectile after X seconds
-                Destroy(gameObject, TimeOut);
+                Destroy(gameObject,TimeOut);
+
 
         }
 
@@ -42,8 +43,8 @@ public class Projectile : MonoBehaviour {
                 //Destroys enemy on contact with projectile. Adds points.
                 if (other.tag == "Enemy"){
                         Instantiate(EnemyDeath, other.transform.position, other.transform.rotation);
-                        Destroy(other.gameObject);
-                        ScoreManager.AddPoints(PointsForKill);
+                        Destroy (other.gameObject);
+                        ScoreManager.AddPoints (PointsForKill);
                 }
 
 

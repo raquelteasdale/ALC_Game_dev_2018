@@ -8,7 +8,7 @@
       <File FileName="Assets/Script/LevelManager.cs" Line="65" Column="14" />
       <File FileName="Assets/Script/KillPlayer.cs" Line="16" Column="13" />
       <File FileName="Assets/Script/PlayerShoot.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Projectile.cs" Line="47" Column="45" />
+      <File FileName="Assets/Script/Projectile.cs" Line="22" Column="70" />
       <File FileName="Assets/Script/CameraFollow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

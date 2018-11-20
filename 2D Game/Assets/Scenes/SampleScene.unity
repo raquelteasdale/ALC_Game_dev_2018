@@ -499,17 +499,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1120775975402674, guid: 8ff893d34c6f24a029eb2aeabb336963,
     type: 2}
   m_PrefabInternal: {fileID: 1726219018}
---- !u!114 &130152900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 130152894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f35171c4fd82488eb6416c4bd5bf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &178237618
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,17 +790,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1993656096486462, guid: c1ef8dbf2aeb54bf89f5d64cfef28e94,
     type: 2}
   m_PrefabInternal: {fileID: 376510865}
---- !u!114 &193907138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 193907134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f35171c4fd82488eb6416c4bd5bf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &196994667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1362,8 @@ Prefab:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c1ef8dbf2aeb54bf89f5d64cfef28e94, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &390893027
@@ -6955,7 +6934,8 @@ Prefab:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4ee5cf72c2ca641eb942b13e407d26b2, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1686081662
@@ -7243,17 +7223,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1589623244897294, guid: 4ee5cf72c2ca641eb942b13e407d26b2,
     type: 2}
   m_PrefabInternal: {fileID: 1677769311}
---- !u!114 &1709889884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709889880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f35171c4fd82488eb6416c4bd5bf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1724330177
 GameObject:
   m_ObjectHideFlags: 0
@@ -7343,7 +7312,24 @@ Prefab:
       propertyPath: ProjectileParticle
       value: 
       objectReference: {fileID: 1709889880}
-    m_RemovedComponents: []
+    - target: {fileID: 212710329415318552, guid: 8ff893d34c6f24a029eb2aeabb336963,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 262bc35c780814287bdb3cda5623b1c3,
+        type: 3}
+    - target: {fileID: 58195002526878212, guid: 8ff893d34c6f24a029eb2aeabb336963,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50005400297907838, guid: 8ff893d34c6f24a029eb2aeabb336963,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 8ff893d34c6f24a029eb2aeabb336963, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1787193606

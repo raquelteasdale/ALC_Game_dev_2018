@@ -18,4 +18,8 @@ public class DestroyFinishedParticle : MonoBehaviour {
 		
 		Destroy (gameObject);
 	}
+
+	void OnBecameInvisible (){
+		Destroy (gameObject);
+	}
 }
