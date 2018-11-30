@@ -27,13 +27,11 @@ public class Projectile : MonoBehaviour {
 
 
 
-
                 // Destroys Projectile after X seconds
                 Destroy(gameObject,TimeOut);
 
-
         }
-
+       
         // Update is called once per frame
         void Update(){
                 GetComponent<Rigidbody2D>().velocity = new Vector2(Speed, GetComponent<Rigidbody2D>().velocity.y);
@@ -41,7 +39,7 @@ public class Projectile : MonoBehaviour {
 
         void OnTriggerEnter2D(Collider2D other){
                 //Destroys enemy on contact with projectile. Adds points.
-                if (other.tag == "Enemy"){
+                if(other.tag == "Enemy"){
                         Instantiate(EnemyDeath, other.transform.position, other.transform.rotation);
                         Destroy (other.gameObject);
                         ScoreManager.AddPoints (PointsForKill);
@@ -52,13 +50,10 @@ public class Projectile : MonoBehaviour {
                 Destroy(gameObject);
         }
 
-
                 void OnCollisionEnter2D(Collision2D other)
         {
-                Instantiate(ProjectileParticle, transform.position, transform.rotation);
-                Destroy (gameObject);
-
+            Instantiate(ProjectileParticle, transform.position, transform.rotation);
+            Destroy (gameObject);
 
         }
-     
-}
+    }
